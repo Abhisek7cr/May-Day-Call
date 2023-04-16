@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multiple Choice Radio Buttons Example</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin: 40px 0 20px;
+            font-size: 36px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            color: #555;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .output::before {
+            content: "You selected: ";
+            color: #aaa;
+            font-weight: normal;
+            font-size: 16px;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .option1 {
+            background-color: #ffb3ba;
+        }
+
+        .option2 {
+            background-color: #ffdac1;
+        }
+
+        .option3 {
+            background-color: #c7ceea;
+        }
+
+        label {
+            color: #333;
+            font-size: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        function handleRadioClick() {
+            // get the selected radio boxes
+            var radios = document.getElementsByName('option');
+            var selectedOptions = [];
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selectedOptions.push(radios[i].value);
+                }
+            }
+
+            // show the appropriate output based on the combination of selections
+            var outputDiv = document.getElementById('output');
+            if (selectedOptions.length == 0) {
+                outputDiv.innerHTML = 'Please select at least one option.';
+            } else if (selectedOptions.length == 1) {
+                outputDiv.innerHTML = 'You selected option ' + selectedOptions[0] + '.';
+            } else {
+                var sum = selectedOptions.reduce(function (a, b) {
+                    return parseInt(a) + parseInt(b);
+                });
+                if (sum == 3) {
+                    outputDiv.innerHTML = 'You selected options ' + selectedOptions.join(', ') + '.<br>Option 1 and Option 2 were selected together.';
+                } else if (sum == 4) {
+                    outputDiv.innerHTML = 'You selected options ' + selectedOptions.join(', ') + '.<br>Option 1 and Option 3 were selected together.';
+                } else if (sum == 5) {
+                    outputDiv.innerHTML = 'You selected options ' + selectedOptions.join(', ') + '.<br>Option 2 and Option 3 were selected together.';
+                } else {
+                    outputDiv.innerHTML = 'You selected options ' + selectedOptions.join(', ') + '.<br>No combination was selected.';
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>Choose your favorite options:</h1>
+    <div class="container">
+        <div class="card option1">
+            <input type="checkbox" name="option" value="1" onclick="handleRadioClick()">
+            <label>Option 1</label>
+        </div>
+        <div class="card option2">
+            <input type="checkbox" name="option" value="2" onclick="handleRadioClick()">
+            <label>Option 2</label>
+        </div>
+        <div class="card option3">
+            <input type="checkbox" name="option" value="3" onclick="handleRadioClick()">
+            <label>Option 3</label>
+        </div>
+    </div>
+    <div class="output" id="output">Please select at least one option.</div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .card {
+        display: inline-block;
+        width: 300px;
+        height: 300px;
+        margin: 67px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      
+      .card-link {
+        display: block;
+        height: 100%;
+        background-color: #ffffff;
+        color: #333333;
+        text-decoration: none;
+        transition: background-color 0.5s ease;
+      }
+      
+      .card-link:hover {
+        background-color: #333333;
+        color: #ffffff;
+      }
+      
+      .card-heading {
+        margin: 20px;
+        font-size: 24px;
+      }
+      
+      .card-text {
+        margin: 20px;
+        font-size: 16px;
+      }
+      
+      .gradient-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to right, #2be221, #c9e4bd);
+        z-index: -1;
+        animation: animate-gradient 10s ease infinite;
+      }
+      
+      @keyframes animate-gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <a href="http://localhost:3000/vents" class="card-link">
+          <h2 class="card-heading">COVID 19 </h2>
+          <p class="card-text">To check patient's severity of covid and need of ventilators.</p>
+        </a>
+      </div>
+      
+      <div class="card">
+        <a href="#" class="card-link">
+          <h2 class="card-heading">VAXIN PREDICTOR</h2>
+          <p class="card-text">coming soon!!!!!!</p>
+        </a>
+      </div>
+      
+     
+
+    <script>
+        // Add gradient background to each card
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+  const gradientBg = document.createElement('div');
+  gradientBg.classList.add('gradient-bg');
+  card.appendChild(gradientBg);
+});
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OUR APP</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+            background-color: greenyellow;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #0059c6;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+		}
+		main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 50px;
+		}
+		.app-image {
+			max-width: 500px;
+			margin-bottom: 50px;
+		}
+		.card-container {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			max-width: 600px;
+			margin-bottom: 50px;
+		}
+		.card {
+			background-color: #f2f2f2;
+			box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			padding: 20px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+			flex-basis: calc(33.33% - 20px);
+			margin-right: 20px;
+		}
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0px 7px 10px rgba(0,0,0,0.3);
+		}
+		.card:last-child {
+			margin-right: 0;
+		}
+		.butt{
+			height: 12px;
+			padding:12px;
+			
+		}
+	</style>
+</head>
+<body>
+	<form action="/app" method="get"></form>
+	<header>Download our Android App now!</header>
+	<main>
+		<img class="app-image" src="data:image/jpeg;base64,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" alt="App Screenshot">
+		<div class="card-container">
+			<div  class="card">
+				<h3>Features</h3>
+				<p>Shows you a detailed imformation of your packyears and risk assessment.</p>
+			</div>
+			<div   class="card">
+				<h3>Reviews</h3>
+				<p>Read reviews from satisfied users and see what they have to say about our app.</p>
+			</div>
+			
+			<div class="card">
+				<h3>Download</h3>
+				<p>Download the app from the GIT HUB /  Google Play Store and start using it today.</p>
+				
+				<button class="button">
+					<a href="https://github.com/ayuush-ai/healthapp" style="color: tomato;text-decoration:none">Download</a>
+				</button>
+				</a>
+			</div>
+		</div>
+	</main>
+	<script>
+		// Add click event listeners to the cards
+		const cards = document.querySelectorAll('.card');
+		cards.forEach(card => {
+			card.addEventListener('click', () => {
+				// Replace with actual functionality
+				alert('This feature is not yet implemented!');
+			});
+		});
+	</script>
+</body>
+</html>

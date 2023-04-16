@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smoking Calculator</title>
+    <style>
+        body {
+            background: linear-gradient( green, lightgreen);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        input[type="number"] {
+            background-color: lightgrey;
+            border: none;
+            border-radius: 5px;
+            color: black;
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            color: green;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            padding: 10px;
+            transition: all 0.3s ease-in-out;
+            width: 100px;
+        }
+
+        button:hover {
+            background-color: green;
+            color: white;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 50px auto 0 auto;
+            width: 400px;
+        }
+
+        th,
+        td {
+            border: 1px solid white;
+            padding: 10px;
+        }
+
+        th {
+            background-color: green;
+            font-size: 20px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Smoking Calculator</h1>
+    <label for="cigarettesPerDay">Number of cigarettes smoked per day:</label><br>
+    <input type="number" id="cigarettesPerDay"><br>
+    <label for="yearsSmoked">Number of years smoked:</label><br>
+    <input type="number" id="yearsSmoked"><br>
+    <button onclick="calculate()">Calculate</button>
+    <table id="resultsTable" style="display:none">
+        <tr>
+            <th>Factor</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Pack Years</td>
+            <td id="packYearsResult"></td>
+        </tr>
+        <tr>
+            <td>COPD Risk</td>
+            <td id="copdRiskResult"></td>
+        </tr>
+        <tr>
+            <td>Lung Cancer Risk</td>
+            <td id="lungCancerRiskResult"></td>
+        </tr>
+    </table>
+    <script>
+        function calculate() {
+            let cigarettesPerDay = parseInt(document.getElementById("cigarettesPerDay").value);
+            let yearsSmoked = parseInt(document.getElementById("yearsSmoked").value);
+            let packYears = (cigarettesPerDay / 20) * yearsSmoked;
+            let copdRisk = "Unknown";
+            let lungCancerRisk = "Unknown";
+            if (packYears >= 10 && packYears < 20) {
+                copdRisk = "Moderate";
+                lungCancerRisk = "1.5 times higher";
+            } else if (packYears >= 20 && packYears < 30) {
+                copdRisk = "High";
+                lungCancerRisk = "2-3 times higher";
+            } else if (packYears >= 30) {
+                copdRisk = "Very high";
+                lungCancerRisk = "5-10 times higher";
+            }
+            document.getElementById("packYearsResult").innerHTML = packYears.toFixed(2);
+            document.getElementById("copdRiskResult").innerHTML = copdRisk;
+            document.getElementById("lungCancerRiskResult").innerHTML = lungCancerRisk;
+            document.getElementById("resultsTable").style.display = "table";
+        }
+    </script>
+</body>
+
+</html>
